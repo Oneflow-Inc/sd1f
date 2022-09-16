@@ -1,5 +1,6 @@
 FROM python:3.8-slim
-RUN apt update && apt install -y wget git libglib2.0-0 libsm6 libxext6 libxrender-dev
+RUN --mount=type=cache,id=apt-dev,target=/var/cache/apt \
+    apt update && apt install -y wget git libglib2.0-0 libsm6 libxext6 libxrender-dev
 RUN apt clean && rm -rf /var/lib/apt/lists/*
 # RUN useradd -ms /bin/bash stablediff
 # install conda
