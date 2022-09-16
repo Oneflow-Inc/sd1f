@@ -6,9 +6,9 @@ RUN mkdir /app/weights/
 
 RUN --mount=type=cache,id=apt-dev,target=/var/cache/apt \
     apt update && apt install -y wget
-RUN wget --progress=bar:force:noscroll "https://github.com/DagnyT/hardnet/raw/master/pretrained/train_liberty_with_aug/checkpoint_liberty_with_aug.pth" -P /root/.cache/torch/hub/checkpoints/checkpoint_liberty_with_aug.pth
+RUN wget --progress=bar:force:noscroll "https://github.com/DagnyT/hardnet/raw/master/pretrained/train_liberty_with_aug/checkpoint_liberty_with_aug.pth" -P /root/.cache/torch/hub/checkpoints
 # and now just grab the weights as well
-RUN wget --progress=bar:force:noscroll "https://www.googleapis.com/storage/v1/b/aai-blog-files/o/sd-v1-4.ckpt?alt=media" -P /app/weights/sd-v1-4.ckpt
+RUN wget --progress=bar:force:noscroll "https://www.googleapis.com/storage/v1/b/aai-blog-files/o/sd-v1-4.ckpt?alt=media" -O /app/weights/sd-v1-4.ckpt
 RUN --mount=type=cache,id=apt-dev,target=/var/cache/apt \
     apt update && apt install -y wget git libglib2.0-0 libsm6 libxext6 libxrender-dev
 RUN apt clean && rm -rf /var/lib/apt/lists/*
