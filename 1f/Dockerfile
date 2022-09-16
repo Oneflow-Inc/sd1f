@@ -3,7 +3,7 @@ RUN apt update && apt install -y wget git libglib2.0-0 libsm6 libxext6 libxrende
 RUN apt clean && rm -rf /var/lib/apt/lists/*
 # RUN useradd -ms /bin/bash stablediff
 # install conda
-RUN wget \
+RUN wget --progress=bar:force:noscroll \
     https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
     && mkdir /root/.conda \
     && bash Miniconda3-latest-Linux-x86_64.sh -b \
@@ -28,6 +28,6 @@ ENV PROMPT="a drawing of a giraffe riding a motorcycle in space"
 # RUN python scripts/txt2img.py; exit 0
 # there are even more post install downloads. the image is really big anyways already,
 # so i was thinking about just including the weights as well... open to your ideas!
-RUN wget https://github.com/DagnyT/hardnet/raw/master/pretrained/train_liberty_with_aug/checkpoint_liberty_with_aug.pth -P /root/.cache/torch/hub/checkpoints/checkpoint_liberty_with_aug.pth
+RUN wget --progress=bar:force:noscroll https://github.com/DagnyT/hardnet/raw/master/pretrained/train_liberty_with_aug/checkpoint_liberty_with_aug.pth -P /root/.cache/torch/hub/checkpoints/checkpoint_liberty_with_aug.pth
 # and now just grab the weights as well
-RUN wget https://www.googleapis.com/storage/v1/b/aai-blog-files/o/sd-v1-4.ckpt?alt=media  -P weights/sd-v1-4.ckpt
+RUN wget --progress=bar:force:noscroll https://www.googleapis.com/storage/v1/b/aai-blog-files/o/sd-v1-4.ckpt?alt=media -P weights/sd-v1-4.ckpt

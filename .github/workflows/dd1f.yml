@@ -7,7 +7,7 @@ on:
       - add-docker-img
 
 concurrency:
-  group: llvm-cuda-${{ github.ref }}
+  group: sd1f-${{ github.ref }}
   cancel-in-progress: true
 
 env:
