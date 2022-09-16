@@ -5,4 +5,5 @@ docker run -it --rm --gpus all \
     -v $HOME/.cache/huggingface:/root/.cache/huggingface \
     -v $PWD:$PWD \
     -w $PWD \
+    --name sd1f-$USER \
     oneflowinc/sd1f:latest bash
